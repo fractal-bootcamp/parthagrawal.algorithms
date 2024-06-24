@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 
 // const insSort = (parentArr: number[]): number[][] => {
 
@@ -98,7 +98,10 @@ export const Insertion = () => {
                         })}
                     </div>
                     <div className="flex flex-row gap-1">
-                        Sorted array: {displayArr.map((num, idx) => {
+                        Sorted array: {startArr.slice(displayArr.length).map((num, idx) => {
+                            return <Rectangle key={idx} length={num} isTarget={false} />
+                        })}
+                        {displayArr.map((num, idx) => {
                             return (
                                 <Rectangle key={idx} length={num} isTarget={true} />
                             )
@@ -111,6 +114,9 @@ export const Insertion = () => {
         </>
     );
 }
+
+
+
 
 const Rectangle = ({ length, isTarget }: { length: number, isTarget: boolean }) => {
     const boxHeight = length * 20;
