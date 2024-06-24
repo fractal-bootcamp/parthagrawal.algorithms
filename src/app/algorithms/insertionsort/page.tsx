@@ -1,13 +1,17 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export const Insertion = () => {
     const [startArr, setStart] = useState([3, 4, 5, 6, 7, 8, 1, 9, 2, 10])
     // const { arr } = bubbleSort(startArr)
     const [arr, setArr] = useState<number[]>(structuredClone(startArr))
     // const [sorted, setSorted] = useState(false);
-    // const [step, setStep] = useState(0);
+
+    const [counters, setCounters] = useState({
+        inner: 0,
+        outer: 0,
+    })
     // const [stepMetadata, setStepMetadata] = useState<{
     //   step: number;
     //   swapped: boolean
@@ -16,6 +20,61 @@ export const Insertion = () => {
     //   step: 0
 
     // })
+
+    // iterate through the array (outer for loop). this is the test subject
+    // iterate through the array (inner for loop) from right to left. Keep iterating until 
+    //  test subject is greater than the compared element, then insert it at
+    // compared + 1 index
+
+
+
+    // useEffect(() => {
+    //     // maybe setup timeout and useffect to track i instead of step
+
+    //     if (counters.outer < arr.length) {
+    //         debugger;
+
+    //         const testSubj = arr[counters.outer]
+    //         setCounters({ inner: counters.outer, outer: counters.outer })
+    //         if (counters.inner > 0) {
+    //             if (testSubj > arr[counters.inner]) {
+    //                 let newArr = structuredClone(arr)
+    //                 newArr[counters.inner + 1] = arr[counters.inner]
+    //                 newArr[counters.inner] = testSubj
+    //                 setArr(newArr)
+    //             }
+    //             setTimeout(() => setCounters({ outer: counters.outer, inner: counters.inner + 1 }), 1000)
+    //             console.log(counters)
+    //         }
+    //         if (counters.inner == 0) {
+    //             const o = counters.outer
+    //             setCounters({ inner: counters.inner, outer: (counters.outer + 1) })
+    //             console.log(counters)
+    //         }
+
+    //     }
+    //     else {
+    //         return console.log('done!')
+
+    //     }
+
+    // }, [counters])
+
+    // useEffect(() => {
+    //     if (step < arr.length) {
+    //         const testSubj = arr[step]
+    //         for (let i = step; i >= 0; i--) {
+    //             if (testSubj > arr[i]) {
+    //                 setArr(arr.toSpliced(i))
+    //             }
+    //         }
+    //         setTimeout(() => setStep(step - 1), 50)
+    //     }
+    //     console.log("sort complete")
+
+
+    // }, [step])
+
 
 
 
@@ -47,6 +106,37 @@ export const Insertion = () => {
         </>
     );
 }
+
+const insSort = (parentArr: number[]): number[] => {
+
+    let sortedArr: number[] = []
+
+    for (let i = 0; i < parentArr.length; i++) {
+        const testElem = parentArr[i]
+        let j = sortedArr.length
+
+        while (true) {
+            if (j == 0) {
+                sortedArr.splice(0, 0, testElem);
+                break;
+            }
+            else if (testElem > sortedArr[j - 1]) {
+                sortedArr.splice(j, 0, testElem);
+                break;
+            }
+            else {
+                j--;
+            }
+        }
+
+    }
+    return sortedArr
+
+}
+
+const startArr = [3, 4, 2, 6, 7, 8, 1, 9, 5, 10]
+
+console.log('sorted:', insSort(startArr))
 
 const Rectangle = ({ length, isTarget }: { length: number, isTarget: boolean }) => {
     const boxHeight = length * 20;
