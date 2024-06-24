@@ -20,6 +20,7 @@ export default function BubbleSort() {
   // })
 
 
+
   useEffect(() => {
     const { newArr, swapped } = bubbleSortStep(arr, step)
 
