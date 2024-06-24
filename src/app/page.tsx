@@ -5,31 +5,38 @@ import { Are_You_Serious } from "next/font/google";
 import { setDefaultHighWaterMark } from "stream";
 
 export default function Home() {
-  const startArr = [3, 4, 5, 6, 7, 8, 1, 2, 9, 10]
+  const startArr = [3, 4, 5, 6, 7, 8, 1, 9, 2, 10]
   // const { arr } = bubbleSort(startArr)
   const [arr, setArr] = useState<number[]>(structuredClone(startArr))
-  const [step, setStep] = useState<number>(0)
-  const [sorted, setSorted] = useState<boolean>(false)
+  const [stepMetadata, setStepMetadata] = useState<{
+    step: number;
+    swapped: boolean
+  }>({
+    swapped: false,
+    step: 0
+
+  })
 
   useEffect(() => {
-    if (step < arr.length && !sorted) {
-      const { newArr, swapped } = bubbleSortStep(arr, step)
+    const { newArr, swapped } = bubbleSortStep(arr, stepMetadata.step)
+    const { step } = stepMetadata;
 
-      setTimeout(() => setArr(newArr), 1000)
-      console.log('swapped:', swapped)
-      if (swapped) { //this restarts the sort if there was a swap
-        setStep(0)
-      }
-      else {
-        setStep(step + 1)
-      }
+    if (step < arr.length) {
+      setArr(newArr);
 
+      setTimeout(() => {
+        setStepMetadata({ step: step + 1, swapped: stepMetadata.swapped || swapped })
+      }, 50)
+    } else {
+      if (stepMetadata.swapped) {
+        setStepMetadata({ step: 0, swapped: false })
+      }
     }
 
 
-    console.log('array sorted')
+    // if arr.length && swapped == true restart
 
-  }, [arr]) // arr as dependency? 
+  }, [stepMetadata]) // arr as dependency? 
 
   return (
     <>
