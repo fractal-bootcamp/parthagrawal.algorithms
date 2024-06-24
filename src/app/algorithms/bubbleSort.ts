@@ -6,33 +6,30 @@
 // done with the array - check if the array is sorted
 // if not, do it again 
 
-export const bubbleSort = (arr: number[]): { outcome: string, arr: number[] } => {
+// put bubbleSort in useEffect hook, and then call bubbleSortStep
+
+
+
+
+export const bubbleSortStep = (arr: number[], i: number): { newArr: number[], swapped: boolean } => {
     let swapped = false;
     const newArr = [...arr];
 
-    for (let i = 0; i < arr.length - 1; i++) {
-        const elem1 = arr[i];
-        const elem2 = arr[i + 1];
-        const shouldSwap = elem2 < elem1;
+    const elem1 = arr[i];
+    const elem2 = arr[i + 1];
+    const shouldSwap = elem2 < elem1;
 
-
-        if (shouldSwap) {
-            // this allows this function to simultaneously confirm the array is sorted
-            // indicate that there was a swap somehow
-            // by saying "hey if there was no swap, then the array is sorted" 
-            // rather than creating a dedicated function that checks this each time
-            newArr[i] = arr[i + 1];
-            newArr[i + 1] = arr[i];
-            swapped = true
-        }
-
-    }
-    if (swapped) {
-        return bubbleSort(newArr)
+    if (shouldSwap) {
+        // this allows this function to simultaneously confirm the array is sorted
+        // indicate that there was a swap somehow
+        // by saying "hey if there was no swap, then the array is sorted" 
+        // rather than creating a dedicated function that checks this each time
+        newArr[i] = arr[i + 1];
+        newArr[i + 1] = arr[i];
+        swapped = true
     }
 
 
-    return { outcome: "sorted", arr: newArr }
-
+    return { newArr: newArr, swapped }
 
 }
