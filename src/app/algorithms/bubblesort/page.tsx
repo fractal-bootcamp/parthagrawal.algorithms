@@ -76,6 +76,10 @@ export default function BubbleSort() {
 
         </div>
 
+        <p className="m-5 italic">
+          The bubble sort algorithm iterates through the array and compares neighboring elements to see which is greater. Its time complexity is O(n²).
+        </p>
+
       </div>
     </>
   );
