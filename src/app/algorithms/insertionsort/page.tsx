@@ -107,9 +107,12 @@ export const Insertion = () => {
     );
 }
 
+const historyArrays: number[][] = []
+
 const insSort = (parentArr: number[]): number[] => {
 
     let sortedArr: number[] = []
+    historyArrays.push(sortedArr);
 
     for (let i = 0; i < parentArr.length; i++) {
         const testElem = parentArr[i]
@@ -118,10 +121,12 @@ const insSort = (parentArr: number[]): number[] => {
         while (true) {
             if (j == 0) {
                 sortedArr.splice(0, 0, testElem);
+                historyArrays.push(structuredClone(sortedArr))
                 break;
             }
             else if (testElem > sortedArr[j - 1]) {
                 sortedArr.splice(j, 0, testElem);
+                historyArrays.push(structuredClone(sortedArr))
                 break;
             }
             else {
@@ -137,6 +142,7 @@ const insSort = (parentArr: number[]): number[] => {
 const startArr = [3, 4, 2, 6, 7, 8, 1, 9, 5, 10]
 
 console.log('sorted:', insSort(startArr))
+console.log('all arrays', historyArrays)
 
 const Rectangle = ({ length, isTarget }: { length: number, isTarget: boolean }) => {
     const boxHeight = length * 20;
