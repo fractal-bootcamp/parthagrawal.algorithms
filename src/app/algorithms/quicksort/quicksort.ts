@@ -1,6 +1,6 @@
 const quickSort = (parentArr: number[]): number[] => {
 
-    // const sortedArr = structuredClone(parentArr)
+    let sortedArr = structuredClone(parentArr)
     const pivotIdx = Math.floor(Math.random() * parentArr.length)
     const pivot = parentArr[pivotIdx]
 
@@ -20,12 +20,14 @@ const quickSort = (parentArr: number[]): number[] => {
 
     })
 
-    if (lessThan.length > 0 || greaterThan.length > 0) {
-        return [...quickSort(lessThan), pivot, ...quickSort(greaterThan)]
+    if (lessThan.length > 0) {
+        return [...quickSort(lessThan), pivot, ...greaterThan]
     }
-    else {
-        return [...lessThan, pivot, ...greaterThan]
+    if (greaterThan.length > 0) {
+        return [...lessThan, pivot, ...quickSort(greaterThan)]
     }
+    return [...lessThan, pivot, ...greaterThan]
+
 
 
 
@@ -33,7 +35,7 @@ const quickSort = (parentArr: number[]): number[] => {
 }
 
 
-const INITIAL_ARRAY = [5, 1, 6, 8, 4, 8, 10, 3]
+const INITIAL_ARRAY = [1, 3, 4, 6, 1, 2, 9, 3]
 const sortedArr = quickSort(INITIAL_ARRAY)
 console.log(sortedArr)
 
