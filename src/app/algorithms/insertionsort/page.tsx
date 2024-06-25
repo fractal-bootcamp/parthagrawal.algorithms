@@ -67,6 +67,8 @@ export const Insertion = () => {
 
     const [displayArr, setDisplayArr] = useState<number[]>([])
     const [step, setStep] = useState(0)
+
+
     const historyArrays = insSort(startArr)
 
     useEffect(() => {

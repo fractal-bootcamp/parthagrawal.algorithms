@@ -2,14 +2,19 @@
 import { useEffect, useState } from "react"
 import quickSortHistory from "./quicksort";
 
+
 export const QuickSortVisualizer = () => {
-    const [startArr, setStart] = useState([3, 4, 5, 6, 7, 8, 1, 9, 2, 10])
+    const [startArr, setStart] = useState([3, 4, 2, 1, 11, 8, 1, 9, 2, 10, 4, 14, 2, 4, 7, 8, 3, 2, 5, 6, 7, 1, 12])
     const [step, setStep] = useState(0);
     // const [history, setHistory] = useState<number[][]>([startArr])
     const [displayArr, setDisplayArr] = useState<number[]>(startArr) //maybe initialize this to 0
 
+    const updateHistory = (arr: number[]) => {
+        history.push(arr)
+    }
 
-    const history: number[][] = quickSortHistory([structuredClone(startArr)])
+    const history: number[][] = []
+    quickSortHistory(structuredClone(startArr), updateHistory)
     // setHistory(quickSortHistory(history))
 
     useEffect(() => {
