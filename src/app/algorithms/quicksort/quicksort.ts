@@ -9,7 +9,6 @@ export const quickSortHistory = (historyArr: number[][]): number[][] => {
 
     const greaterThan: number[] = [];
     const lessThan: number[] = [];
-    debugger;
 
     parentArr.forEach((elem, idx) => {
         if (elem > pivot) {
@@ -52,7 +51,6 @@ export const quickSort = (parentArr: number[]): number[] => {
 
     const greaterThan: number[] = [];
     const lessThan: number[] = [];
-    debugger;
 
     parentArr.forEach((elem, idx) => {
         if (elem > pivot) {
