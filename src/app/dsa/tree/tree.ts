@@ -2,8 +2,8 @@ import { root } from "postcss"
 
 type Node = {
     value: number,
-    leftNode?: Node,
-    rightNode?: Node,
+    leftNode?: Node | null,
+    rightNode?: Node | null,
 }
 
 // type CreateProps = {
@@ -36,6 +36,83 @@ const readTree = (root: Node, callback: Function) => {
     if (root.rightNode) readTree(root.rightNode, callback);
 }
 
+type deleteNodeProps = {
+    value: number,
+    root: Node,
+    parentNode?: Node,
+}
+
+const deleteNode = (props: deleteNodeProps) => {
+
+    const { value } = props
+    const { root } = props
+    const { parentNode } = props
+
+
+
+    const findNextNode = (root: Node) => {
+        if (root.leftNode) findNextNode(root.leftNode);
+        return root
+
+    }
+    // find target
+    if (value < root.value) {
+        if (!root.leftNode) {
+            console.log('node not found')
+            return;
+        }
+        deleteNode({ value, root: root.leftNode, parentNode: root })
+    }
+    else if (value > root.value) {
+        if (!root.rightNode) {
+            console.log('node not found')
+            return;
+        }
+
+        deleteNode({ value, root: root.rightNode, parentNode: root })
+    }
+    else {
+        // target found
+
+        if (parentNode) {
+            // two children
+            if (root.leftNode && root.rightNode) {
+                const nextNode = findNextNode(root.rightNode)
+                root.value = nextNode.value
+                deleteNode({ value: nextNode.value, root: nextNode })
+
+            }
+            // only one child
+            else if (root.leftNode || root.rightNode) {
+
+                // if it's on the left then the parent node's left one needs to be reassigned
+                if (root.value < parentNode.value) {
+                    parentNode.leftNode = root.leftNode || root.rightNode
+                }
+                else {
+                    parentNode.rightNode = root.leftNode || root.rightNode
+                }
+
+
+            }
+            // no children
+            if (!root.leftNode && !root.rightNode) {
+                if (root.value < parentNode.value) {
+                    parentNode.leftNode = null
+                }
+                if (root.value >= parentNode.value) {
+                    parentNode.rightNode = null
+                }
+            }
+        }
+
+
+
+    }
+
+
+}
+
 
 
 
@@ -64,6 +141,11 @@ const startNode: Node = {
 
 insertNode(4, startNode);
 readTree(startNode, console.log);
+debugger;
+deleteNode({ value: 3, root: startNode })
+console.log('after delete')
+readTree(startNode, console.log);
+
 
 
 
