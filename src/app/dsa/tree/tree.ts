@@ -78,8 +78,9 @@ const deleteNode = (props: deleteNodeProps) => {
             // two children
             if (root.leftNode && root.rightNode) {
                 const nextNode = findNextNode(root.rightNode)
-                root.value = nextNode.value
-                deleteNode({ value: nextNode.value, root: nextNode })
+                const tempValue = nextNode.value
+                deleteNode({ value: nextNode.value, root: root })
+                root.value = tempValue
 
             }
             // only one child
