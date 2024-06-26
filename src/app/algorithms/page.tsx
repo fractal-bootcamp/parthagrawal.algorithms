@@ -4,17 +4,23 @@ import BubbleSort from "./bubblesort/page";
 const Algorithms = () => {
     return (
         <>
-            <div className="h-full w-full flex flex-col justify-center items-center">
-                This is the algorithms page!
-                <Link href="/algorithms/bubblesort">
-                    Bubble sort
-                </Link>
-                <Link href="/algorithms/insertionsort">
-                    Insertion sort
-                </Link>
-                <Link href="/algorithms/quicksort">
-                    Quick sort
-                </Link>
+            <div className="h-full w-full flex flex-col gap-3 justify-center items-center">
+                <div className="text-2xl font-bold">
+
+                    Parth's algorithms!
+                </div>
+                <div className="flex flex-col gap-2 underline text-md  ">
+
+                    <Link href="/algorithms/bubblesort">
+                        Bubble sort
+                    </Link>
+                    <Link href="/algorithms/insertionsort">
+                        Insertion sort
+                    </Link>
+                    <Link href="/algorithms/quicksort">
+                        Quick sort (WIP)
+                    </Link>
+                </div>
             </div>
         </>
 
