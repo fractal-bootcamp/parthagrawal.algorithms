@@ -7,7 +7,7 @@ const Algorithms = () => {
             <div className="h-full w-full flex flex-col gap-3 justify-center items-center">
                 <div className="text-2xl font-bold">
 
-                    Parth's algorithms!
+                    The Parth Algorithms
                 </div>
                 <div className="flex flex-col gap-2 underline text-md  ">
 
