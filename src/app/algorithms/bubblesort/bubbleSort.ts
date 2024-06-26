@@ -34,7 +34,7 @@ export const bubbleSortStep = (arr: number[], i: number): { newArr: number[], sw
 
 }
 
-export function bubbleSort(array: number[], callback?: (newArr: number[]) => any): number[] {
+function bubbleSort(array: number[], callback?: (newArr: number[]) => any): number[] {
     const newArray = structuredClone(array)
     let shouldResort = false
     for (let i = 0; i < newArray.length; i++) {

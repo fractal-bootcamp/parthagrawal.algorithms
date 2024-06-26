@@ -32,7 +32,7 @@ import { ReactNode, useEffect, useState } from "react"
 
 // }
 
-export const insSort = (parentArr: number[]): number[][] => {
+const insSort = (parentArr: number[]): number[][] => {
 
     const historyArrays: number[][] = []
 
@@ -61,7 +61,7 @@ export const insSort = (parentArr: number[]): number[][] => {
 }
 
 
-export const Insertion = () => {
+const Insertion = () => {
 
     const startArr = [3, 4, 2, 6, 7, 8, 1, 9, 5, 10]
 
@@ -131,4 +131,4 @@ const Rectangle = ({ length, isTarget }: { length: number, isTarget: boolean }) 
 
 }
 
-export default Insertion
+export default Insertion;
