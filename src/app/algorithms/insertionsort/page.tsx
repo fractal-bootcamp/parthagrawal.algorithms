@@ -92,7 +92,7 @@ const Insertion = () => {
 
                     Insertion Sort Visualization
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-5 items-center">
 
                     <div className="flex flex-row gap-1">
                         Starting array: {startArr.map((num, idx) => {
@@ -109,6 +109,10 @@ const Insertion = () => {
                             )
                         })}
                     </div>
+                    <p className="w-[50%] italic">
+                        The insertion sort algorithm sorts the array one element at a time. Each element in the parent array is added to its correct sorted spot in the output array through one-by-one comparisons. Its worst-case time complexity is O(n) and best-case time-complexity is O(n²). Best suited for small loads.
+                    </p>
+
 
                 </div>
 
