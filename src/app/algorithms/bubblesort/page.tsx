@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Are_You_Serious } from "next/font/google";
 import { setDefaultHighWaterMark } from "stream";
 import { bubbleSortStep } from "./bubbleSort";
+import Link from "next/link";
 
 export default function BubbleSort() {
   const [startArr, setStart] = useState([3, 4, 5, 6, 7, 8, 1, 9, 2, 10])
@@ -80,6 +81,9 @@ export default function BubbleSort() {
         <p className="m-5 italic">
           The bubble sort algorithm iterates through the array and compares neighboring elements to see which is greater. Its time complexity is O(n²).
         </p>
+        <Link className="underline" href="/algorithms/">
+          {'<'} Back to algorithms
+        </Link>
 
       </div>
     </>

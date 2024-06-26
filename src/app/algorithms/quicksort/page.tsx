@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import quickSortHistory from "./quicksort";
+import Link from "next/link";
 
 const QuickSortVisualizer = () => {
     const [startArr, setStart] = useState([3, 4, 2, 1, 11, 8, 1, 9, 2, 10, 4, 14, 2, 4, 7, 8, 3, 2, 5, 6, 7, 1, 12])
@@ -56,6 +57,10 @@ const QuickSortVisualizer = () => {
                 <p className="m-5 italic">
                     The quick sort algorithm...
                 </p>
+
+                <Link className="underline" href="/algorithms/">
+                    {'<'} Back to algorithms
+                </Link>
 
             </div>
         </>

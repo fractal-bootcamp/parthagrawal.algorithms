@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { ReactNode, useEffect, useState } from "react"
 
 // const insSort = (parentArr: number[]): number[][] => {
@@ -112,6 +113,10 @@ const Insertion = () => {
                     <p className="w-[50%] italic">
                         The insertion sort algorithm sorts the array one element at a time. Each element in the parent array is added to its correct sorted spot in the output array through one-by-one comparisons. Its worst-case time complexity is O(n) and best-case time-complexity is O(n²). Best suited for small loads.
                     </p>
+
+                    <Link className="underline" href="/algorithms/">
+                        {'<'} Back to algorithms
+                    </Link>
 
 
                 </div>
