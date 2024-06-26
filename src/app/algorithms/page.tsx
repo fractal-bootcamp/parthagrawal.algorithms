@@ -9,6 +9,12 @@ const Algorithms = () => {
                 <Link href="/algorithms/bubblesort">
                     Bubble sort
                 </Link>
+                <Link href="/algorithms/insertionsort">
+                    Insertion sort
+                </Link>
+                <Link href="/algorithms/quicksort">
+                    Quick sort
+                </Link>
             </div>
         </>
 
